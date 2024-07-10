@@ -5,7 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 export default class News extends Component {
   constructor(props) {
     super(props);
-    const { category, pageSize } = this.props;
+    const { category, pageSize} = this.props;
 
     this.state = {
       articles: [],
@@ -18,20 +18,28 @@ export default class News extends Component {
   }
 
   async fetchNews() {
-    console.log(this.state.page
-    );
-    if (this.state.loading) return;
-  
+    
+    //if (this.state.loading) return;
+    this.props.setLoadingProgress(0);
+    
+    this.props.setLoadingProgress(30);
     this.setState({ loading: true });
     const { category, pageSize, page } = this.state;
     const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=0cc4346ecdd649908a7e19cf82e9ccc7&pageSize=${pageSize}&page=${page}`;
+    
     const data = await fetch(apiUrl);
+    this.props.setLoadingProgress(60);
+
     const parse = await data.json();
-    this.setState((prevState) => ({
+    this.props.setLoadingProgress(90);
+
+    await this.setState((prevState) => ({
       articles: prevState.page === 1 ? parse.articles : prevState.articles.concat(parse.articles),
       numResults: parse.totalResults,
       loading: false,
     }));
+    this.props.setLoadingProgress(100);
+
   }
   
 
