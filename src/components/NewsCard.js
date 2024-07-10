@@ -13,8 +13,8 @@ export class NewsCard extends Component {
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
             <p className="card-text">{descrip}...</p>
-            <span class="badge bg-secondary">Source : {source}</span>
-            <p class="card-text"><small class="text-muted">article by {author} on {date}</small></p>
+            <span className="badge bg-secondary">Source : {source}</span>
+            <p className="card-text"><small className="text-muted">article by {author} on {date}</small></p>
             <a href={url} className="btn btn-primary btn-sm btn-dark">Read More</a>
           </div>
         </div>
