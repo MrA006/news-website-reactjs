@@ -35,6 +35,7 @@ export default class App extends Component {
             <Route path="/science" element={<News category='science' pageSize={15} setLoadingProgress={this.setLoadingProgress} />} />
             <Route path="/sports" element={<News category='sports' pageSize={15} setLoadingProgress={this.setLoadingProgress} />} />
             <Route path="/technology" element={<News category='technology' pageSize={15} setLoadingProgress={this.setLoadingProgress} />} />
+            <Route path="*" element={<News category='general' pageSize={15} setLoadingProgress={this.setLoadingProgress} />} />
           </Routes>
         </Router>
       </div>
